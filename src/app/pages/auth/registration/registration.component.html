@@ -1,0 +1,59 @@
+<div class="d-flex flex-column col-6 registration-input-wrap m-auto">
+  <div>
+    <span class="mx-3">Логин</span>
+    <input type="text"
+           pInputText
+           [(ngModel)]="login"
+           [ngClass]="{'input-error' : !login}" />
+  </div>
+
+  <div>
+    <span class="mx-3">Пароль</span>
+    <input type="password"
+           class="mt-3"
+           pInputText
+           [(ngModel)]="psw"
+           [ngClass]="{'input-error' : !psw}" />
+  </div>
+
+  <div>
+    <span class="mx-3">Подтверждение пароля</span>
+    <input type="password"
+           class="mt-3"
+           pInputText
+           [(ngModel)]="pswRepeat"
+           [ngClass]="{'input-error' : !pswRepeat}" />
+  </div>
+
+  <div>
+    <span class="mx-3">Почта</span>
+    <input type="text"
+           class="mt-3"
+           pInputText
+           [(ngModel)]="email"/>
+  </div>
+
+  <div>
+    <span class="mx-3">Номер карты</span>
+    <input type="text"
+           class="mt-3"
+           pInputText
+           [(ngModel)]="cardNumber"/>
+  </div>
+
+  <div  class="mt-3">
+    <p-checkbox (onChange)="saveUserInLS()"
+                label="Сохранить пользователя в локальном хранилище"
+                name="groupname"
+                [(ngModel)]="selectedValue"
+                [binary]="true"></p-checkbox>
+  </div>
+
+  <div class="mt-5 d-flex justify-content-end" >
+    <button [disabled]="!login || !psw || !pswRepeat"
+            (click)="registration($event)"  type="button"
+            class="btn btn-success">Зарегистрироваться
+    </button>
+  </div>
+
+</div>
