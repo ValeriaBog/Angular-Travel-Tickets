@@ -6,6 +6,21 @@
     <p>Активный элемент: {{blockDirective.activeElementIndex}}</p>
   </div>
 
+  <div class="mb-4">
+    <span class="mx-3">Поиск тура</span>
+    <input type="text"
+           class="mt-3"
+           pInputText
+           [(ngModel)]="nameTour"/>
+    <button
+      (click)="search($event)"  type="button"
+      class="m-3 btn btn-success">Найти
+    </button>
+
+
+
+  </div>
+
   <div appBlocksStyle
        #tourWrap
        #blockDirective='blocksStyle'

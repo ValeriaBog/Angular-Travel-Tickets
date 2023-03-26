@@ -12,6 +12,7 @@ import {BlocksStyleDirective} from "../../../directive/blocks-style.directive";
 })
 export class TicketListComponent implements OnInit, AfterViewInit {
   tickets: ITour[];
+  nameTour: string;
   @ViewChild('tourWrap', {read: BlocksStyleDirective}) blockDirective: BlocksStyleDirective; // к директиве,  можно записать так @ViewChild(BlocksStyleDirective) blockDirective: BlocksStyleDirective;
   @ViewChild('tourWrap') tourWrap: ElementRef; // к элементу
 
@@ -30,6 +31,17 @@ export class TicketListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+
+  }
+
+  search(ev:Event){
+   const findNameTour =  this.tickets.find((e)=>{
+     return e.name == this.nameTour
+    })
+    if(findNameTour){
+      this.goToTicketInfoPage(findNameTour)
+    }
+
 
   }
 
