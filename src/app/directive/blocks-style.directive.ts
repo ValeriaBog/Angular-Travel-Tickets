@@ -47,9 +47,18 @@ export class BlocksStyleDirective implements OnInit, AfterViewInit, OnChanges {
 
   }
 
-  initKeyUp(ev: KeyboardEvent): void { // коллбек функция
+  initKeyUp(ev: KeyboardEvent): void | boolean{ // коллбек функция
 
     if (ev.key === 'ArrowRight' || ev.key === 'ArrowLeft') {
+
+      if(ev.key === 'ArrowLeft' && this.index === 0){
+        return false;
+      }
+
+      if(ev.key === 'ArrowRight' && this.index === this.items.length-1){
+        return false;
+      }
+
       (this.items[this.index] as HTMLElement).removeAttribute('style')
     }
     console.log('evKey', ev);
@@ -62,6 +71,7 @@ export class BlocksStyleDirective implements OnInit, AfterViewInit, OnChanges {
         (this.items[this.index] as HTMLElement).setAttribute('style', 'border: 2px solid red');
       }
     } else if (ev.key === 'ArrowLeft') {
+
       this.index--;
       if (this.items[this.index]) {
         (this.items[this.index] as HTMLElement).setAttribute('style', 'border: 2px solid red');

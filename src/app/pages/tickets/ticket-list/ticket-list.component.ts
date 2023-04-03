@@ -13,6 +13,7 @@ import {BlocksStyleDirective} from "../../../directive/blocks-style.directive";
 export class TicketListComponent implements OnInit, AfterViewInit {
   tickets: ITour[];
   nameTour: string;
+  x =false
   @ViewChild('tourWrap', {read: BlocksStyleDirective}) blockDirective: BlocksStyleDirective; // к директиве,  можно записать так @ViewChild(BlocksStyleDirective) blockDirective: BlocksStyleDirective;
   @ViewChild('tourWrap') tourWrap: ElementRef; // к элементу
 
@@ -50,6 +51,7 @@ export class TicketListComponent implements OnInit, AfterViewInit {
   }
 
   directiveRenderComplete(ev: boolean){
+    this.x =true;
     const el: HTMLElement = this.tourWrap.nativeElement;
     el.setAttribute('style', 'background-color: #e9efec')
 
