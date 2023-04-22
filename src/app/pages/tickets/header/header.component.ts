@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy, OnChanges {
   items: MenuItem[];
   time: Date;
   private timerInterval: number;
-  user: IUsers;
+  user: IUsers| null;
 
   @Input() menuType: IMenuType;
 
@@ -62,12 +62,15 @@ export class HeaderComponent implements OnInit, OnDestroy, OnChanges {
       },
       {
         label: 'Настройки',
-        routerLink:['/settings'],
+        routerLink:['settings'],
         visible: this.settingsActive
       },
       {
         label: 'Выйти',
-        routerLink:['/auth']
+        routerLink:['/auth'],
+        command: () => {
+        this.userService.removeUser()
+        }
       },
 
     ];

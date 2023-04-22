@@ -40,13 +40,18 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
   onAuth(ev: Event): void {
     const authUser: IUsers = {
       psw: this.psw,
-      login: this.login
+      login: this.login,
+      cardNumber: this.cardNumber
     }
     if (!this.authService.checkUsers(authUser)) {
+
+
+
       this.messageService.add({severity: 'error', summary: 'Введены неверные логин или пароль'});
     } else {
       this.userService.setUser(authUser);
       this.router.navigate(['tickets/tickets-list'])
+      this.userService.setToken('user-private-token')
     }
   }
 }

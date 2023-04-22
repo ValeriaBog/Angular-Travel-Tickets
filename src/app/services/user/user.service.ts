@@ -5,10 +5,11 @@ import {IUsers} from "../../models/users";
   providedIn: 'root'
 })
 export class UserService {
-  private user: IUsers;
+  private user: IUsers|null;
+  private token: string|null
   constructor() { }
 
-  getUser(): IUsers {
+  getUser(): IUsers | null{
     return this.user;
     // возвращается user
   };
@@ -17,4 +18,17 @@ export class UserService {
     console.log(this.user)
     // записывается пользователь в this.user
   };
+
+  setToken(token: string): void{
+    this.token = token
+    localStorage.setItem('token', token)
+  }
+  getToken(): string | null{
+    return this.token || localStorage.getItem('token')
+  }
+  removeUser(){
+    this.user = null
+    this.token = null
+  }
+
 }

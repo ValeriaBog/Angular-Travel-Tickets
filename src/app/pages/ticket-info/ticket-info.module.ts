@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { TicketInfoRoutingModule } from './ticket-info-routing.module';
 import { TicketItemComponent } from './ticket-item/ticket-item.component';
+import {InputTextModule} from "primeng/inputtext";
+import {InputNumberModule} from "primeng/inputnumber";
+import {CalendarModule} from "primeng/calendar";
+import {ReactiveFormsModule} from "@angular/forms";
+import {CarouselModule} from "primeng/carousel";
 
 
 @NgModule({
@@ -11,7 +16,12 @@ import { TicketItemComponent } from './ticket-item/ticket-item.component';
   ],
   imports: [
     CommonModule,
-    TicketInfoRoutingModule
+    TicketInfoRoutingModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    InputNumberModule,
+    CalendarModule,
+    CarouselModule
   ]
 })
 export class TicketInfoModule { }
