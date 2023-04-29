@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { TicketInfoRoutingModule } from './ticket-info-routing.module';
 import { TicketItemComponent } from './ticket-item/ticket-item.component';
 import {InputTextModule} from "primeng/inputtext";
 import {InputNumberModule} from "primeng/inputnumber";
 import {CalendarModule} from "primeng/calendar";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import {CarouselModule} from "primeng/carousel";
 
 
@@ -21,7 +20,8 @@ import {CarouselModule} from "primeng/carousel";
     InputTextModule,
     InputNumberModule,
     CalendarModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule
   ]
 })
 export class TicketInfoModule { }

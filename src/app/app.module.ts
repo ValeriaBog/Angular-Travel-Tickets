@@ -7,6 +7,8 @@ import {AuthService} from "./services/auth/auth.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RestInterceptorsService} from "./services/interceptors/rest-interceptors.service";
 import {ConfigService} from "./services/config/config.service";
+import { StatisticComponent } from './pages/settings/statistic/statistic.component';
+import {TableModule} from "primeng/table";
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import {ConfigService} from "./services/config/config.service";
     AppComponent,
 
 
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule
   ],
   providers: [ConfigService,
     {

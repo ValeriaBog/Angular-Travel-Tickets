@@ -2,9 +2,10 @@
 <!--  *ngIf="tickets"-->
 
   <div *ngIf="x">
-
+    <ng-container>
     <p>Количество элементов: {{tickets.length}}</p>
     <p>Активный элемент: {{blockDirective.activeElementIndex}}</p>
+    </ng-container>
   </div>
 
   <div>
@@ -18,8 +19,7 @@
            pInputText
            [(ngModel)]="nameTour"/>
     <button
-      (click)="search($event)"  type="button"
-      class="m-3 btn btn-success">Найти
+      (click)="search($event)"  type="button" class="m-3 btn btn-success">Найти
     </button>
 
 

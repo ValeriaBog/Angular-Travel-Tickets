@@ -3,6 +3,7 @@ import {IMenuType} from "../../../models/menuType";
 import {ITourTypeSelect} from "../../../models/tours";
 import {TicketService} from "../../../services/tickets/ticket.service";
 import {MessageService} from "primeng/api";
+import {SettingService} from "../../../services/setting/setting.service";
 
 @Component({
   selector: 'app-aside',
@@ -18,7 +19,8 @@ export class AsideComponent implements OnInit {
     {label: 'Одиночный', value: 'single'},
     {label: 'Групповой', value: 'multi'}
   ]
-  constructor(private ticketService: TicketService, private messageService: MessageService) { }
+  constructor(private ticketService: TicketService, private messageService: MessageService,
+              private settingService: SettingService) { }
 
   ngOnInit(): void {
     this.menuTypes = [
@@ -46,6 +48,12 @@ export class AsideComponent implements OnInit {
       (err)=> {
       this.messageService.add({severity: 'error', summary: 'Ошибка сервера'})
     });
+  }
+
+  initSettingsData():void{
+    this.settingService.loadUserSettingsSubject({
+      saveToken: false,
+    })
   }
 
 }

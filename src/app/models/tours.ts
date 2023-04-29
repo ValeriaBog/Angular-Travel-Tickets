@@ -23,3 +23,7 @@ export interface ITourLocation {
   name: string;
   id: string;
 }
+
+export interface ICustomTicketData extends INearestTour{
+  region: ITourLocation
+}
