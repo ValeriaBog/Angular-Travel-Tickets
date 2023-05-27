@@ -17,13 +17,21 @@
   </div>
   <div>
 
-
-      <button (click)="initRestError()" type="button" pButton pRipple class="p-button-info">Обработка</button>
+      <button (click)="initRestError()" type="button" pButton pRipple class="p-button-info">Запрос с ошибкой</button>
     <p-toast></p-toast>
 
     <div class="mt-4">
-      <button class="btn-success btn" type = "submit" (click)="initSettingsData()">Обновить настройки</button>
+      <button class="btn-sm btn" type = "submit" (click)="initSettingsData()">Обновить настройки</button>
     </div>
 
   </div>
+
+  <div class="mt-4">
+    <button class="btn-sm btn" (click)="initTours()">Сформировать туры</button>
+  </div>
+
+  <div class="mt-4">
+    <button class="btn-sm btn" (click)="deleteTours()">Удалить туры</button>
+  </div>
+
 </div>

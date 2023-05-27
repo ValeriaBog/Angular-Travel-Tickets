@@ -40,6 +40,10 @@ export class TicketListComponent implements OnInit, AfterViewInit {
 
       })
 
+    this.ticketService.ticketUpdateSubject$.subscribe((data)=>{
+      this.tickets = data
+    })
+
     this.tourUnsubscriber = this.ticketService.ticketType$.subscribe((data:ITourTypeSelect) => {  console.log('data', data)
 
       setTimeout(() => {
@@ -103,7 +107,7 @@ const fromEventOberver = fromEvent(this.ticketSearch.nativeElement, 'keyup')
   }
 
   goToTicketInfoPage(item: ITour) {
-    this.router.navigate([`/tickets/ticket/${item.id}`])
+    this.router.navigate([`/tickets/ticket/${item._id}`])
   }
 
   directiveRenderComplete(ev: boolean){

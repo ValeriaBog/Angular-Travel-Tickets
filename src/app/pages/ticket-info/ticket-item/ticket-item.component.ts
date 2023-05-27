@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {forkJoin, fromEvent, Subscription} from "rxjs";
 import {TicketService} from "../../../services/tickets/ticket.service";
+import {IOrder} from "../../../models/order";
 
 @Component({
   selector: 'app-ticket-item',
@@ -48,15 +49,20 @@ export class TicketItemComponent implements OnInit, AfterViewInit {
 
 
     const routeIdParam = this.route.snapshot.paramMap.get('id'); //вернет значение (индетификатор), кот передан ticket-list.component.ts (navigate)
-    const queryIdParam = this.route.snapshot.queryParamMap.get('id');
+    const queryIdParam = this.route.snapshot.queryParamMap.get('_id');
 
     const paramValueId = routeIdParam || queryIdParam;
+    console.log('paramValueId', paramValueId)
     if (paramValueId) {
-      const ticketStorage = this.ticketStorage.getStorage();
-      if(Array.isArray(ticketStorage)){
-        this.ticket = ticketStorage.find((el) => el.id === paramValueId);
-      }
-      console.log('this.ticket', this.ticket)
+      this.ticketService.getTicketById(paramValueId).subscribe((data) => {
+        this.ticket = data;
+      });
+
+      // const ticketStorage = this.ticketStorage.getStorage();
+      // if(Array.isArray(ticketStorage)){
+      //   this.ticket = ticketStorage.find((el) => el.id === paramValueId);
+      // }
+      // console.log('this.ticket', this.ticket)
     }
 
     forkJoin([this.ticketService.getNearestTours(),
@@ -108,7 +114,20 @@ export class TicketItemComponent implements OnInit, AfterViewInit {
     const userData = this.userForm.getRawValue();
     //информация о туре + личная информация
     const postData = {...this.ticket, ...userData};
-    this.ticketService.sendTourData(postData).subscribe()
+    console.log('postData', postData)
+
+    const userId = this.userService.getUser()?.id || null;
+
+    const postObj: IOrder = {
+      age: postData.age,
+      birthday: postData.birthday,
+      cardNumber: postData.cardNumber,
+      lastName: postData.lastName,
+      tourId: postData._id,
+      userId: userId,
+    }
+
+    this.ticketService.sendTourData(postObj).subscribe()
 
   }
 

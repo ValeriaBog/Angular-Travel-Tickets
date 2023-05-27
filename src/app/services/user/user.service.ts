@@ -30,5 +30,8 @@ export class UserService {
     this.user = null
     this.token = null
   }
+  setToStore(token: string) {
+    window.localStorage.setItem('userToken', token);
+  }
 
 }
